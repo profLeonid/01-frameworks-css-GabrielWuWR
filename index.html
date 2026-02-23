@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+    <title>PicoCss</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body[data-theme="light"] {
+        --pico-background-color: #ff0000;
+        --pico-color: #ffffff;
+        --pico-font-size: 2rem;
+        --pico-secondary-background: #ffffff;
+        --pico-secondary-color: #ff0000;
+
+        .logo {
+            background-image: url(img/LOGO.png);
+        }
+
+        .botao {
+            background-color: #005caa;
+            color: #ffffff;
+        }
+    }
+
+    body[data-theme="dark"] {
+        --pico-background-color: #005caa;
+        --pico-color: #ffffff;
+        --pico-font-size: 2rem;
+        --pico-secondary-background: #ffffff;
+        --pico-secondary-color: #005caa;
+
+        .logo {
+            background-image: url(img/LOGO-DARK.png);
+        }
+
+        .botao {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        transition: .2s;
+
+        background-color: var(--pico-background-color);
+        color: var(--pico-color);
+        font-size: var(--pico-font-size);
+    }
+
+    span {
+        background-color: var(--pico-secondary-background);
+        color: var(--pico-secondary-color);
+        padding: 0px 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 500px;
+        height: 100vh;
+    }
+
+    .alinhar {
+        text-align: end;
+    }
+
+    .logo {
+        height: 15vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+
+<body data-theme="dark">
+    <header>
+        <button class="botao">Claro</button>
+    </header>
+    <section class="container">
+        <div class="logo"></div>
+
+        <div class="letras">
+            <p>Aprende <span>fazendo</span></p>
+            <div class="alinhar">
+                <p>Faz <span>sabendo</span></p>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script>
+    const btn_tema = document.querySelector('.botao');
+    const body = document.body;
+
+    btn_tema.addEventListener('click', () => {
+        const temaAtual = body.getAttribute('data-theme');
+
+        if (temaAtual === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            btn_tema.textContent = 'Escuro';
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            btn_tema.textContent = 'Claro';
+        }
+    });
+</script>
+</html>
